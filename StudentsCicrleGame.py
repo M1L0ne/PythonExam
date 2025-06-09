@@ -1,11 +1,13 @@
 import random
 
+
 class Node:
     def __init__(self, name):
         self.name = name
         self.rating = 0
         self.next = None
         self.prev = None
+
 
 class CircularDoublyLinkedList:
     def __init__(self):
@@ -63,12 +65,13 @@ class CircularDoublyLinkedList:
         players.sort(key=lambda x: (-x[1], x[2]))
         return players
 
+
 print("=" * 50)
 print("ИГРА 'ДОБРОЕ ДЕЛО'")
 print("=" * 50)
 
 try:
-    with open("Students.txt", 'r', encoding='utf-8') as file:
+    with open("Students.txt", "r", encoding="utf-8") as file:
         names = [line.strip() for line in file if line.strip()]
 except:
     print("Ошибка при чтении файла Students.txt")
@@ -122,5 +125,9 @@ print("=" * 50)
 print("Рейтинг учеников (по убыванию):")
 
 sorted_players = cdll.get_players_sorted()
-for i, (name, rating, _) in enumerate(sorted_players, 1):
-    print(f"{i}. {name}: {rating}")
+number = 1
+for player in sorted_players:
+    name = player[0]
+    rating = player[1]
+    print(str(number) + ". " + name + ": " + str(rating))
+    number = number + 1
